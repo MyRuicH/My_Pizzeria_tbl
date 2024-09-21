@@ -1,0 +1,16 @@
+{# templates/_navigation.html #}
+
+
+<nav>
+    {% for menu_item in ["index", "menu"] %}
+        <a href="{{ url_for(menu_item)}}">{{ menu_item }}</a>
+    {% endfor %}
+    
+    <style> nav {
+        font-size: 40px;
+        position: relative;
+        left: 1470px;
+        top: 10px;
+        background-color: rgb(233, 172, 156);
+    }</style>
+</nav>
