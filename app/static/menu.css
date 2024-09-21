@@ -1,0 +1,23 @@
+h1 {
+    font-size: 70px;
+    position: relative;
+    left: 50px; 
+    top: 40px;
+    background: rgb(233, 172, 156);
+}
+
+table {
+    position: relative;
+    top: 80px;
+    left: 50px;
+    color: #fccbae;
+}
+
+h2 {
+    position: relative;
+    top: 140px;
+    left: 50px;
+    font-size: 55px;
+    background-color: rgb(233, 172, 156);
+    
+}
