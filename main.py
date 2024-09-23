@@ -1,5 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
+from app.data import db
 
 app = Flask(__name__, template_folder="app/templates", static_folder="app/static")
 
@@ -11,17 +12,25 @@ def index():
 
 @app.get("/menu/")
 def menu():
-    pizzas = [
-        {"name": "Пепероні", "ingredients": "ковбаса 'Пепероні', сир, соус", "price": 150},
-        {"name": "Моцарела", "ingredients": "сир 'Моцарела', соус, петрушка", "price": 173},
-        {"name": "Чотири сири", "ingredients": "сир 'Моцарела', сир 'Чедер', сир 'Сологуні', сир 'Пармезан', соус", "price": 267},
-        {"name": "Чотири сири", "ingredients": "сир 'Моцарела', сир 'Чедер', сир 'Сологуні', сир 'Пармезан', соус", "price": 311}
-    ]
+    pizzas = db.get_pizzas()
     context = {
         "title":"Menu",
         "pizzas": pizzas
     }
     return render_template("menu.html", **context)
+
+
+@app.get("/add_pizza/")
+def add_pizza():
+    return render_template("add_pizza.html", title="Додати піцу")
+
+
+@app.post("/add_pizza/")
+def add_pizza_post():
+    data = request.form
+    print(f"{data = }")
+    db.insert_data(**data)
+    index()
 
 
 if __name__ == "__main__":
