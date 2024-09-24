@@ -14,7 +14,7 @@ def index():
 def menu():
     pizzas = db.get_pizzas()
     context = {
-        "title":"Menu",
+        "title":"Меню",
         "pizzas": pizzas
     }
     return render_template("menu.html", **context)
